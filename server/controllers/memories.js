@@ -1,8 +1,13 @@
 import Memory from "../models/Memory.js";
 
 const getAllMemories = async (req, res) => {
+   console.log(":hittt")
    try {
-      const memories = await Memory.find();
+      // const memories = await Memory.find();
+      const memories = {
+         title: "Post 1",
+         author: "Admin",
+      };
       res.status(201).json({
          success: true,
          data: memories,
@@ -33,4 +38,4 @@ const createMemory = async (req, res, next) => {
       });
    }
 };
-export { getAllMemories,createMemory };
+export { getAllMemories, createMemory };
