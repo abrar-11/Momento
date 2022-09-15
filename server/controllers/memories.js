@@ -1,8 +1,36 @@
-const getAllMemories = (req, res) => {
-   res.status(201).json({
-      success: true,
-      data: [],
-   });
+import Memory from "../models/Memory.js";
+
+const getAllMemories = async (req, res) => {
+   try {
+      const memories = await Memory.find();
+      res.status(201).json({
+         success: true,
+         data: memories,
+      });
+   } catch (error) {
+      res.status(500).json({
+         success: false,
+         error: error,
+         data: [],
+      });
+   }
 };
 
-export { getAllMemories };
+const createMemory = async (req, res, next) => {
+   try {
+      const memory = new Memory(req.body);
+      await Memory.save();
+
+      res.status(201).json({
+         success: true,
+         data: Memory,
+      });
+   } catch (error) {
+      res.status(500).json({
+         success: false,
+         error: error,
+         data: [],
+      });
+   }
+};
+export { getAllMemories,createMemory };

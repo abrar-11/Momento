@@ -13,6 +13,8 @@ const MemorySchema = mongoose.Schema({
       type: String,
       required: [true, "Please provide a creator"],
    },
+   tags: [String],
+   imgfile: String,
    likeCount: {
       type: Number,
       default: 0,
@@ -24,3 +26,4 @@ const MemorySchema = mongoose.Schema({
 });
 
 const Memory = mongoose.model("Memory", MemorySchema);
+export default Memory;
