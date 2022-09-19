@@ -1,9 +1,9 @@
 import Memory from "../models/Memory.js";
 
 const getAllMemories = async (req, res) => {
-   console.log(":hittt")
+   // console.log(":hittt"
+   // const memories = await Memory.find();
    try {
-      // const memories = await Memory.find();
       const memories = {
          title: "Post 1",
          author: "Admin",
@@ -23,12 +23,13 @@ const getAllMemories = async (req, res) => {
 
 const createMemory = async (req, res, next) => {
    try {
-      const memory = new Memory(req.body);
-      await Memory.save();
+      console.log(req.body)
+      // const memory = new Memory(req.body);
+      // await Memory.save();
 
       res.status(201).json({
          success: true,
-         data: Memory,
+         // data: Memory,
       });
    } catch (error) {
       res.status(500).json({
