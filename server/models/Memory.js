@@ -13,6 +13,9 @@ const MemorySchema = mongoose.Schema({
       type: String,
       required: [true, "Please provide a creator"],
    },
+   imgfile: {
+      type: String,
+   },
    tags: [String],
    imgfile: String,
    likeCount: {

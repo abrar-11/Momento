@@ -9,3 +9,7 @@ export const fetchAllMemories = () => {
 export const createNewMemory = (data) => {
    return axios.post(url, data);
 };
+
+export const update = (data) => {
+   return axios.put(url, data);
+};

@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllMemories,createMemory } from "../controllers/memories.js";
+import { getAllMemories,createMemory, updateMemory } from "../controllers/memories.js";
 
 const router = express.Router();
 
@@ -7,5 +7,6 @@ const router = express.Router();
 
 router.get("/", getAllMemories);
 router.post("/", createMemory);
+router.put("/:id", updateMemory);
 
 export default router;

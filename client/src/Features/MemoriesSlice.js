@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
-import { fetchAllMemories, createNewMemory } from "../Api/memories";
+import { fetchAllMemories, createNewMemory,update } from "../Api/memories";
 
 export const getMemories = createAsyncThunk(
    "memories/getMemories",
@@ -19,6 +19,13 @@ export const createMemory = createAsyncThunk(
       return data;
    }
 );
+
+
+
+export const updateMemory = createAsyncThunk("memories/createMemory",async(e)=>{
+   const {data} =  await update(e)
+})
+
 
 const initialState = {
    memories: [],
@@ -43,12 +50,12 @@ const MemoriesSlice = createSlice({
       });
       builder.addCase(createMemory.fulfilled, (state, action) => {
          console.log(action.payload.data);
-         // state.memories = action.payload.data;
+         state.memories = [action.payload, ...state.memories];
          state.isLoading = false;
       });
    },
 });
 
-export const get_memories = (state) => state.MemoriesSlice.memories;
+export const get_memories =  (state) => state.memories;
 export const { checking } = MemoriesSlice.actions;
 export default MemoriesSlice.reducer;
